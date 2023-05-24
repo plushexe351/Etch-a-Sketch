@@ -6,15 +6,12 @@ const eraser = document.querySelector('.eraser');
 const clear = document.querySelector('.clear');
 const header = document.querySelector('header');
 const container = document.querySelector('.container');
-const cells = 30;
+let cells = 40;
 let cellcolor = "#9754cb";
-
-
-for (let i = 0; i < (cells * cells); i++) {
-    grid.innerHTML += `<div class="cell"></div>`;
-}
-
-def.addEventListener('click', () => cellcolor = "#9754cb")
+createCells();
+def.addEventListener('click', () => {
+    cellcolor = "#9754cb";
+})
 grayscale.addEventListener('click', () => cellcolor = "rgb(207, 207, 207)")
 jazzy.addEventListener('click', () => cellcolor = "greenyellow");
 eraser.addEventListener('click', () => cellcolor = "white");
@@ -23,6 +20,13 @@ clear.addEventListener('click', () => {
         cell.style.background = "white";
     })
 })
+function createCells() {
+
+    for (let i = 0; i < (cells * cells); i++) {
+        grid.innerHTML += `<div class="cell"></div>`;
+    }
+}
+
 
 let mousedown = false;
 // document.querySelectorAll('.cell').forEach(cell => {
