@@ -4,8 +4,9 @@ Hey, this is my version of The Odin Project's Etch-a-Sketch.
 
 ## Git clone
 
-1. HTTPS: https://github.com/plushexe351/Etch-a-Sketch/edit/main/README.md
-2. SSH : git@github.com:plushexe351/Etch-a-Sketch.git
+```git clone https://github.com/plushexe351/Etch-a-Sketch/edit/main/README.md```
+
+```git clone git@github.com:plushexe351/Etch-a-Sketch.git```
 
 ## Live Preview 
 
