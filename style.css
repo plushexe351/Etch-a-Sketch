@@ -28,7 +28,6 @@ header {
   color: #deacf5;
   width: 100vw;
   min-height: 100px;
-  /* height: 100px; */
   padding: 20px;
   z-index: 10;
 }
@@ -84,7 +83,7 @@ header ul li:active {
   background-color: white;
 }
 .container {
-  display: flex;
+  /* display: flex; */
   width: max-content;
   margin-inline: auto;
   margin-top: 100px;
