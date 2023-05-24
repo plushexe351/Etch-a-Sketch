@@ -6,10 +6,13 @@ const eraser = document.querySelector('.eraser');
 const clear = document.querySelector('.clear');
 const header = document.querySelector('header');
 const container = document.querySelector('.container');
-let cells = 40;
+let cells = 50;
 let cellcolor = "#9754cb";
+
 createCells();
+
 def.addEventListener('click', () => {
+
     cellcolor = "#9754cb";
 })
 grayscale.addEventListener('click', () => cellcolor = "rgb(207, 207, 207)")
@@ -21,7 +24,6 @@ clear.addEventListener('click', () => {
     })
 })
 function createCells() {
-
     for (let i = 0; i < (cells * cells); i++) {
         grid.innerHTML += `<div class="cell"></div>`;
     }
