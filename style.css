@@ -13,6 +13,7 @@
 }
 body {
   min-height: 100vh;
+  /* max-height: 100vw; */
   background-color: #28104e;
 }
 header {
@@ -104,15 +105,11 @@ header ul li:active {
 }
 footer {
   width: 100vw;
-  height: 40px;
+  padding: 10px;
   color: #9754cb;
   font-size: 30px;
   letter-spacing: 3px;
   text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
   background-color: #160630;
   position: fixed;
   bottom: 0;
@@ -125,10 +122,21 @@ footer img {
   border-radius: 50%;
 }
 @media only screen and (max-width: 1000px) {
-  /* header {
-    height: auto;
-  } */
   .container {
     margin-top: 200px;
+  }
+}
+@media (hover: none) {
+  header ul,
+  .container {
+    display: none;
+  }
+  header:after {
+    content: "Sorry! Etch-a-Sketch is not compatible with your device. See in Desktop.";
+    font-size: 8vw;
+    width: 100vw;
+    color: #9754cb;
+    padding: 30px;
+    text-align: center;
   }
 }
