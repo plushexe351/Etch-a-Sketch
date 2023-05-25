@@ -10,6 +10,8 @@ const penBtn = document.querySelector('.pen');
 const colorBtn = document.getElementById('color');
 const toggleGridView = document.querySelector('.toggle-grid');
 const pickrange = document.querySelector('#pickrange');
+const togglePen = document.querySelector('.toggle-pen');
+
 
 
 const defaultBackground = "white";
@@ -19,6 +21,8 @@ const defaultColor = "#9754cb";
 let backgroundColor = defaultBackground;
 let currentMode = 'default';
 let cells;
+
+
 
 pickrange.addEventListener('input', () => {
     cells = pickrange.value;
@@ -40,6 +44,7 @@ toggleGridView.addEventListener('click', () => {
 colorBtn.addEventListener('input', () => {
     currentMode = "pen";
     cellcolor = colorBtn.value;
+    togglePen.classList.add('active');
 })
 
 
@@ -123,7 +128,12 @@ function generateGrayscale() {
     return `rgb(${rgb},${rgb},${rgb})`;
 
 }
+togglePen.addEventListener('click', () => {
+    currentMode = "pen";
+    cellcolor = colorBtn.value;
+    togglePen.classList.add('active');
 
+})
 grayscaleBtn.addEventListener('click', () => {
     currentMode = "grayscale";
     cellcolor = "black";
@@ -135,6 +145,7 @@ jazzyBtn.addEventListener('click', () => {
 eraserBtn.addEventListener('click', () => {
     currentMode = "eraser";
     cellcolor = "black";
+    togglePen.classList.remove('active');
 });
 
 function createCells(size) {

@@ -71,6 +71,7 @@ label.slider {
   height: max-content;
   color: #eaceff;
   -webkit-backdrop-filter: blur(90px);
+  backdrop-filter: blur(90px);
 }
 #pickrange {
   position: absolute;
