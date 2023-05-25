@@ -10,7 +10,7 @@ and I've played around a bit with this.
 ## Key features of this project
 
 - Multiple pen modes
-- Grayscale mode
+- Greyscale mode
 - Custom pen color and background color
 - Toggle Grid View
 
