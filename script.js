@@ -12,8 +12,6 @@ const toggleGridView = document.querySelector('.toggle-grid');
 const pickrange = document.querySelector('#pickrange');
 const togglePen = document.querySelector('.toggle-pen');
 
-
-
 const defaultBackground = "white";
 const defaultCells = 50;
 const defaultColor = "#9754cb";
@@ -21,8 +19,6 @@ const defaultColor = "#9754cb";
 let backgroundColor = defaultBackground;
 let currentMode = 'default';
 let cells;
-
-
 
 pickrange.addEventListener('input', () => {
     cells = pickrange.value;
@@ -48,7 +44,6 @@ colorBtn.addEventListener('input', () => {
 })
 
 
-
 baColorBtn.addEventListener('input', () => {
 
     backgroundColor = baColorBtn.value;
@@ -60,19 +55,16 @@ baColorBtn.addEventListener('input', () => {
 })
 
 
-
-
 window.onload = () => {
     currentMode = "default";
     cells = defaultCells;
     createCells(defaultCells);
-
 }
 
 let mousedown = false;
 
-grid.onmousedown = () => (mousedown = true);
-grid.onmouseup = () => (mousedown = false);
+document.body.onmousedown = () => (mousedown = true);
+document.body.onmouseup = () => (mousedown = false);
 
 function draw(e) {
     if (e.type === 'mouseover' && !mousedown)
@@ -100,7 +92,6 @@ function clearGrid() {
 
 clearBtn.addEventListener('click', () => {
     clearGrid();
-    // cells = 30;
     createCells(cells);
 
 })
@@ -113,7 +104,6 @@ defBtn.addEventListener('click', () => {
     toggleGridView.classList.remove('active');
     createCells(cells);
 })
-
 
 function randomColor() {
     let r = Math.floor(Math.random() * 255);
@@ -156,7 +146,6 @@ function createCells(size) {
         cell.classList.add('cell');
 
         if (!(toggleGridView.classList.contains('active')) || currentMode == "default")
-            // if (!(toggleGridView.classList.contains('active')))
             cell.classList.add('gridview');
 
         cell.style.cssText = `height : calc(100vw / ${cells})`;
