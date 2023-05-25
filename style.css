@@ -1,6 +1,6 @@
 @font-face {
   font-family: dotty;
-  src: url(fonts/dotty/dotty.ttf);
+  src: url(font/dotty/dotty.ttf);
 }
 * {
   margin: 0;
@@ -13,27 +13,22 @@
 }
 body {
   min-height: 100vh;
-  /* max-height: 100vw; */
-  background-color: #28104e;
+  background-color: rgb(38, 30, 39);
 }
 header {
   position: fixed;
   top: 0;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-evenly;
-  gap: 10px;
-  background-color: #28104e;
+  background-color: inherit;
   color: #deacf5;
   width: 100vw;
   min-height: 100px;
-  padding: 20px;
+  padding: 25px;
   z-index: 10;
 }
 header h1 {
+  text-align: center;
+  padding-bottom: 10px;
   font-size: 5rem;
-  letter-spacing: 0px;
   color: #deacf5;
 }
 header ul {
@@ -41,23 +36,67 @@ header ul {
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
+  align-items: center;
 }
-header ul li {
-  padding: 10px 20px;
-  list-style: none;
-  border: 1px solid #deacf5;
-  font-size: 2rem;
+header ul * {
   cursor: pointer;
 }
+header ul input {
+  width: 30px;
+  height: 20px;
+}
+header ul li,
+label {
+  padding: 10px 20px;
+  list-style: none;
+  color: white;
+  border: 1px solid #deacf5;
+  border-radius: none;
+  font-size: 1.5rem;
+}
+label.slider {
+  position: relative;
+  width: 200px;
+}
+.slider::before {
+  transition: 0.2s ease;
+}
+.slider:hover::before {
+  content: "NOTE: This clears current sketchboard";
+  position: absolute;
+  width: 70%;
+  padding: 5px;
+  top: -50px;
+  left: 0;
+  height: max-content;
+  color: #eaceff;
+  -webkit-backdrop-filter: blur(90px);
+}
+#pickrange {
+  position: absolute;
+  width: 100px;
+  right: 10px;
+  bottom: 8px;
+}
+
+header ul li:hover,
+header ul li.clear,
+label:hover,
+#color:hover ~ .pen,
+#ba-color:hover ~ .background,
+.active {
+  background-color: white;
+  color: #28104e;
+}
 header ul li:active {
-  transform: scale(1.05);
+  transform: scale(0.9);
 }
 .default {
-  color: #9754cb;
+  color: #deacf5;
 }
 .default:hover {
-  background-color: #9754cb;
   color: #28104e;
+  background-color: #eaceff;
 }
 .grayscale {
   color: rgb(207, 207, 207);
@@ -77,31 +116,22 @@ header ul li:active {
 .clear {
   color: white;
 }
-.eraser:hover,
-.clear:hover {
-  color: #28104e;
-  background-color: white;
-}
-.container {
-  /* display: flex; */
-  width: max-content;
-  margin-inline: auto;
-  margin-top: 100px;
-  margin-bottom: 40px;
-}
+
 .grid {
+  width: max-content;
+  margin: 150px auto 40px auto;
   height: 100vw;
   width: 100vw;
   display: flex;
-  gap: 1px;
   flex-wrap: wrap;
 }
-.container .cell {
-  background-color: white;
+.grid .cell {
+  background-color: rgb(255, 255, 255);
 }
-.container .cell:hover {
-  box-shadow: inset 0 0 60px black;
+.gridview {
+  border: 1px solid rgba(69, 69, 69, 0.361);
 }
+
 footer {
   width: 100vw;
   padding: 10px;
@@ -109,7 +139,7 @@ footer {
   font-size: 30px;
   letter-spacing: 3px;
   text-align: center;
-  background-color: #160630;
+  background-color: rgb(38, 30, 39);
   position: fixed;
   bottom: 0;
   z-index: 10;
@@ -120,22 +150,22 @@ footer img {
   border: 1px solid white;
   border-radius: 50%;
 }
-@media only screen and (max-width: 1000px) {
-  .container {
+@media only screen and (max-width: 1030px) {
+  .grid {
     margin-top: 200px;
   }
 }
 @media (hover: none) {
   header ul,
-  .container {
+  .grid {
     display: none;
   }
   header:after {
     content: "Sorry! Etch-a-Sketch is not compatible with your device. See in Desktop.";
-    font-size: 8vw;
     width: 100vw;
-    color: #9754cb;
     padding: 30px;
+    color: #9754cb;
+    font-size: 8vw;
     text-align: center;
   }
 }
