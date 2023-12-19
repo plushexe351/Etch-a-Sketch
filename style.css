@@ -162,7 +162,7 @@ header ul li:active {
 }
 
 .gridview {
-  border: 1px solid rgba(69, 69, 69, 0.361);
+  border: 1px solid rgba(69, 69, 69, 0.161);
 }
 
 
@@ -213,6 +213,7 @@ footer img {
 
   header {
     height: 5rem;
+    flex-direction: column;
   }
 
   .toggleSettings {
@@ -229,7 +230,6 @@ footer img {
     backdrop-filter: blur(2rem);
     -webkit-backdrop-filter: blur(2rem);
     height: 100vh;
-    flex-direction: column;
     gap: 2rem;
   }
 
