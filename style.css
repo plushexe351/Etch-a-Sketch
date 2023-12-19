@@ -126,7 +126,8 @@ header ul li:active {
   color: rgb(207, 207, 207);
 }
 
-.grayscale:hover {
+.grayscale:hover,
+.grayscale.current {
   background-color: rgb(207, 207, 207);
   color: #28104e;
 }
@@ -135,7 +136,8 @@ header ul li:active {
   color: greenyellow;
 }
 
-.jazzy:hover {
+.jazzy:hover,
+.jazzy.current {
   background-color: greenyellow;
   color: #28104e;
 }
@@ -165,20 +167,19 @@ header ul li:active {
 
 
 .toggleSettings {
-  /* position: absolute; */
   color: white !important;
   display: none;
   font-size: 3rem;
   position: absolute;
-  left: 2rem;
+  left: 1rem;
   top: 0.5rem;
   transform: rotate(90deg);
 
 }
 
-/* footer {
+footer {
   width: 100vw;
-  padding: 10px;
+  padding: 0.7rem;
   color: #9754cb;
   font-size: 2rem;
   letter-spacing: 2px;
@@ -186,7 +187,7 @@ header ul li:active {
   background-color: rgb(38, 30, 39);
   position: fixed;
   bottom: 0;
-  z-index: 10;
+  left: 0;
 }
 
 footer img {
@@ -194,11 +195,10 @@ footer img {
   background-color: white;
   border: 1px solid white;
   border-radius: 50%;
-} */
+}
 
 @media screen and (max-width:1250px) {
   header {
-    gap: 2rem;
     flex-direction: row;
   }
 }
@@ -206,6 +206,10 @@ footer img {
 @media screen and (max-width:830px) {
   .grid {
     margin-top: 5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   header {
@@ -237,20 +241,3 @@ footer img {
     display: unset;
   }
 }
-
-/* @media (hover: none) {
-
-  header ul,
-  .grid {
-    display: none;
-  }
-
-  header:after {
-    content: "Sorry ! Etch-a-Sketch is not compatible with your device. See in Desktop.";
-    width: 100vw;
-    padding: 30px;
-    color: #9754cb;
-    font-size: 8vw;
-    text-align: center;
-  }
-} */

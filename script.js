@@ -43,6 +43,8 @@ colorBtn.addEventListener('input', () => {
     currentMode = "pen";
     cellcolor = colorBtn.value;
     togglePen.classList.add('active');
+    grayscaleBtn.classList.remove('current');
+    jazzyBtn.classList.remove('current');
 })
 
 
@@ -71,19 +73,38 @@ document.body.onmouseup = () => (mousedown = false);
 
 function draw(e) {
     e.preventDefault();
+    let targetElement;
     if ((e.type === 'mouseover') && !mousedown)
         return
-    e.target.classList.add('drawn');
-    if (currentMode == "jazzy")
+    if (e.type === 'touchstart' || e.type === 'touchmove') {
+        const touch = e.touches[0];
+        targetElement = document.elementFromPoint(touch.clientX, touch.clientY);
+        if (!targetElement || !targetElement.classList.contains('cell')) {
+            return;
+        }
+        // targetElement.style.background = randomColor();
+        console.log(targetElement);
+    }
+    if (currentMode == "jazzy") {
         e.target.style.background = randomColor();
-    else if (currentMode == "default")
+        targetElement.style.background = randomColor();
+    }
+    else if (currentMode == "default") {
         e.target.style.background = defaultColor;
-    else if (currentMode == "eraser")
+        targetElement.style.background = defaultColor || null;
+
+    }
+    else if (currentMode == "eraser") {
         e.target.style.background = "none";
-    else if (currentMode == "grayscale")
+    }
+    else if (currentMode == "grayscale") {
         e.target.style.background = generateGrayscale();
-    else if (currentMode == "pen")
+        targetElement.style.background = generateGrayscale();
+    }
+    else if (currentMode == "pen") {
         e.target.style.background = cellcolor;
+        targetElement.style.background = cellcolor;
+    }
 }
 
 function updateCells(newCells) {
@@ -102,6 +123,8 @@ clearBtn.addEventListener('click', () => {
 defBtn.addEventListener('click', () => {
     clearGrid();
     currentMode = "default";
+    grayscaleBtn.classList.remove('current');
+    jazzyBtn.classList.remove('current');
     cells = defaultCells;
     backgroundColor = defaultBackground;
     cellcolor = "#9754cb";
@@ -124,19 +147,29 @@ function generateGrayscale() {
 }
 togglePen.addEventListener('click', () => {
     currentMode = "pen";
+    grayscaleBtn.classList.remove('current');
+    jazzyBtn.classList.remove('current');
     cellcolor = colorBtn.value;
     togglePen.classList.add('active');
 
 })
 grayscaleBtn.addEventListener('click', () => {
     currentMode = "grayscale";
+    grayscaleBtn.classList.add('current');
+    jazzyBtn.classList.remove('current');
+
     cellcolor = "black";
 });
 jazzyBtn.addEventListener('click', () => {
     currentMode = "jazzy";
+    jazzyBtn.classList.add('current');
+    grayscaleBtn.classList.remove('current');
+
     cellcolor = randomColor();
 });
 eraserBtn.addEventListener('click', () => {
+    grayscaleBtn.classList.remove('current');
+    jazzyBtn.classList.remove('current');
     currentMode = "eraser";
     cellcolor = "black";
     togglePen.classList.remove('active');
@@ -155,12 +188,13 @@ function createCells(size) {
         cell.style.cssText = `height : calc(100vw / ${cells})`;
         cell.style.cssText = `width : calc(100vw/ ${cells})`;
         cell.style.background = backgroundColor;
-        cell.addEventListener('touchstart', draw);
 
+        // cell.addEventListener('touchstart', draw);
         cell.addEventListener('mousedown', draw);
         cell.addEventListener('touchstart', draw);
         cell.addEventListener('touchmove', draw);
         cell.addEventListener('mouseover', draw);
+
         cell.addEventListener('touchend', () => {
             mousedown = false;
         });
@@ -175,18 +209,6 @@ function createCells(size) {
     }
     grid.style.backgroundColor = backgroundColor;
 }
-
-navItems.forEach(item => {
-    item.addEventListener('click', () => {
-        if (header.classList.contains('nav-active')) {
-            navItems.forEach(navitem => {
-                navitem.classList.remove('nav-active');
-            })
-            header.classList.remove('nav-active');
-        }
-
-    })
-})
 
 toggleSettings.addEventListener('click', () => {
     header.classList.toggle('nav-active');
