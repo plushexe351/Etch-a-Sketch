@@ -28,7 +28,7 @@ pickrange.addEventListener('input', () => {
     createCells(cells);
 })
 
-let cellcolor = "#9754cb";
+let cellcolor = defaultColor;
 
 toggleGridView.addEventListener('click', () => {
     document.querySelectorAll('.cell').forEach(cell => {
@@ -189,7 +189,6 @@ function createCells(size) {
         cell.style.cssText = `width : calc(100vw/ ${cells})`;
         cell.style.background = backgroundColor;
 
-        // cell.addEventListener('touchstart', draw);
         cell.addEventListener('mousedown', draw);
         cell.addEventListener('touchstart', draw);
         cell.addEventListener('touchmove', draw);

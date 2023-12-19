@@ -167,14 +167,13 @@ header ul li:active {
 
 
 .toggleSettings {
-  color: white !important;
+  padding: 1rem;
   display: none;
   font-size: 3rem;
   position: absolute;
   left: 1rem;
   top: 0.5rem;
   transform: rotate(90deg);
-
 }
 
 footer {
@@ -182,7 +181,7 @@ footer {
   padding: 0.7rem;
   color: #9754cb;
   font-size: 2rem;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-align: center;
   background-color: rgb(38, 30, 39);
   position: fixed;
@@ -231,6 +230,7 @@ footer img {
     -webkit-backdrop-filter: blur(2rem);
     height: 100vh;
     flex-direction: column;
+    gap: 2rem;
   }
 
   ul * {
