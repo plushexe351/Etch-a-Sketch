@@ -82,7 +82,6 @@ function draw(e) {
         if (!targetElement || !targetElement.classList.contains('cell')) {
             return;
         }
-        // targetElement.style.background = randomColor();
         console.log(targetElement);
     }
     if (currentMode == "jazzy") {
@@ -96,6 +95,8 @@ function draw(e) {
     }
     else if (currentMode == "eraser") {
         e.target.style.background = "none";
+        targetElement.style.background = "none";
+
     }
     else if (currentMode == "grayscale") {
         e.target.style.background = generateGrayscale();
