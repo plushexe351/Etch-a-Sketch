@@ -1,7 +1,7 @@
 # Etch-a-Sketch
 
 Hey, this is my version of The Odin Project's Etch-a-Sketch
-and I've played around a bit with this.
+and I've added my own touch to it.
 
 ## Preview
 
@@ -11,18 +11,16 @@ and I've played around a bit with this.
 
 ## Key features
 
+- Fully responsive
 - Multiple pen modes
-- Greyscale mode
-- Eraser
+- GreyScale mode
+- Eraser mode
+- Change number of cells
 - Custom pen color and background color
-- Enable or disable grid view
+- Enable and disable grid view
 
 ## Git clone
 
 `git clone https://github.com/plushexe351/Etch-a-Sketch.git`
 
 `git clone git@github.com:plushexe351/Etch-a-Sketch.git`
-
-## NOTE
-
-This Project is still a work in progress and is not perfect.
