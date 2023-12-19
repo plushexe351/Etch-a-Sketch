@@ -66,9 +66,7 @@ window.onload = () => {
 let mousedown = false;
 
 document.body.onmousedown = () => (mousedown = true);
-document.body.ontouchstart = () => (mousedown = true);
 document.body.onmouseup = () => (mousedown = false);
-document.body.ontouchend = () => (mousedown = false);
 
 
 function draw(e) {
@@ -178,9 +176,21 @@ function createCells(size) {
     grid.style.backgroundColor = backgroundColor;
 }
 
+navItems.forEach(item => {
+    item.addEventListener('click', () => {
+        if (header.classList.contains('nav-active')) {
+            navItems.forEach(navitem => {
+                navitem.classList.remove('nav-active');
+            })
+            header.classList.remove('nav-active');
+        }
+
+    })
+})
+
 toggleSettings.addEventListener('click', () => {
-    header.classList.toggle('active');
+    header.classList.toggle('nav-active');
     navItems.forEach(item => {
-        item.classList.toggle('active');
+        item.classList.toggle('nav-active');
     })
 })
