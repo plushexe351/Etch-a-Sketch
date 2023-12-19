@@ -11,6 +11,8 @@ const colorBtn = document.getElementById('color');
 const toggleGridView = document.querySelector('.toggle-grid');
 const pickrange = document.querySelector('#pickrange');
 const togglePen = document.querySelector('.toggle-pen');
+const toggleSettings = document.querySelector('.toggleSettings');
+const navItems = document.querySelectorAll('ul *');
 
 const defaultBackground = "white";
 const defaultCells = 50;
@@ -64,10 +66,14 @@ window.onload = () => {
 let mousedown = false;
 
 document.body.onmousedown = () => (mousedown = true);
+document.body.ontouchstart = () => (mousedown = true);
 document.body.onmouseup = () => (mousedown = false);
+document.body.ontouchend = () => (mousedown = false);
+
 
 function draw(e) {
-    if (e.type === 'mouseover' && !mousedown)
+    e.preventDefault();
+    if ((e.type === 'mouseover') && !mousedown)
         return
     e.target.classList.add('drawn');
     if (currentMode == "jazzy")
@@ -151,10 +157,17 @@ function createCells(size) {
         cell.style.cssText = `height : calc(100vw / ${cells})`;
         cell.style.cssText = `width : calc(100vw/ ${cells})`;
         cell.style.background = backgroundColor;
+        cell.addEventListener('touchstart', draw);
+
         cell.addEventListener('mousedown', draw);
+        cell.addEventListener('touchstart', draw);
+        cell.addEventListener('touchmove', draw);
         cell.addEventListener('mouseover', draw);
+        cell.addEventListener('touchend', () => {
+            mousedown = false;
+        });
         cell.addEventListener('mouseenter', () => {
-            cell.style.boxShadow = `inset 0 0 60px ${cellcolor}`;
+            cell.style.boxShadow = `inset 0 0 50px ${cellcolor}`;
         })
         cell.addEventListener('mouseleave', () => {
             cell.style.boxShadow = "none";
@@ -165,5 +178,9 @@ function createCells(size) {
     grid.style.backgroundColor = backgroundColor;
 }
 
-
-
+toggleSettings.addEventListener('click', () => {
+    header.classList.toggle('active');
+    navItems.forEach(item => {
+        item.classList.toggle('active');
+    })
+})

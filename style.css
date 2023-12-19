@@ -2,35 +2,46 @@
   font-family: dotty;
   src: url(font/dotty/dotty.ttf);
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: dotty, sans-serif;
 }
+
 ::selection {
   background-color: transparent;
 }
+
 body {
   min-height: 100vh;
   background-color: rgb(38, 30, 39);
 }
+
 header {
   position: fixed;
   top: 0;
-  background-color: inherit;
+  background-color: rgb(38, 30, 39);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   color: #deacf5;
   width: 100vw;
-  min-height: 100px;
-  padding: 25px;
+  height: 10rem;
+  padding: 0.5rem;
   z-index: 10;
 }
+
 header h1 {
   text-align: center;
-  padding-bottom: 10px;
-  font-size: 5rem;
+  width: 20rem;
+  padding: 0.5rem;
+  font-size: 3rem;
   color: #deacf5;
 }
+
 header ul {
   display: flex;
   flex-wrap: wrap;
@@ -38,29 +49,35 @@ header ul {
   justify-content: center;
   align-items: center;
 }
+
 header ul * {
   cursor: pointer;
 }
+
 header ul input {
   width: 30px;
   height: 20px;
 }
+
 header ul li,
 label {
-  padding: 10px 20px;
+  padding: 10px 1rem;
   list-style: none;
   color: white;
   border: 1px solid #deacf5;
   border-radius: none;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
+
 label.slider {
   position: relative;
   width: 200px;
 }
+
 .slider::before {
   transition: 0.2s ease;
 }
+
 .slider:hover::before {
   content: "NOTE: This clears current sketchboard";
   position: absolute;
@@ -73,46 +90,55 @@ label.slider {
   -webkit-backdrop-filter: blur(90px);
   backdrop-filter: blur(90px);
 }
+
 #pickrange {
   position: absolute;
   width: 100px;
   right: 10px;
-  bottom: 8px;
+  bottom: 10px;
 }
 
 header ul li:hover,
 header ul li.clear,
 label:hover,
-#color:hover ~ .pen,
-#ba-color:hover ~ .background,
+#color:hover~.pen,
+#ba-color:hover~.background,
 .active {
   background-color: white;
   color: #28104e;
 }
+
 header ul li:active {
   transform: scale(0.9);
 }
+
 .default {
   color: #deacf5;
 }
+
 .default:hover {
   color: #28104e;
   background-color: #eaceff;
 }
+
 .grayscale {
   color: rgb(207, 207, 207);
 }
+
 .grayscale:hover {
   background-color: rgb(207, 207, 207);
   color: #28104e;
 }
+
 .jazzy {
   color: greenyellow;
 }
+
 .jazzy:hover {
   background-color: greenyellow;
   color: #28104e;
 }
+
 .eraser,
 .clear {
   color: white;
@@ -120,53 +146,109 @@ header ul li:active {
 
 .grid {
   width: max-content;
-  margin: 150px auto 40px auto;
+  background-color: pink;
+  margin: 10rem 0 0 0;
   height: 100vw;
   width: 100vw;
   display: flex;
   flex-wrap: wrap;
 }
+
 .grid .cell {
   background-color: rgb(255, 255, 255);
 }
+
 .gridview {
   border: 1px solid rgba(69, 69, 69, 0.361);
 }
 
-footer {
+
+.toggleSettings {
+  /* position: absolute; */
+  display: none;
+  font-size: 3rem;
+  position: absolute;
+  left: 2rem;
+  top: 0.5rem;
+  transform: rotate(90deg);
+
+}
+
+/* footer {
   width: 100vw;
   padding: 10px;
   color: #9754cb;
-  font-size: 30px;
-  letter-spacing: 3px;
+  font-size: 2rem;
+  letter-spacing: 2px;
   text-align: center;
   background-color: rgb(38, 30, 39);
   position: fixed;
   bottom: 0;
   z-index: 10;
 }
+
 footer img {
   max-height: 25px;
   background-color: white;
   border: 1px solid white;
   border-radius: 50%;
-}
-@media only screen and (max-width: 1030px) {
-  .grid {
-    margin-top: 200px;
+} */
+
+@media screen and (max-width:1250px) {
+  header {
+    gap: 2rem;
+    flex-direction: row;
   }
 }
-@media (hover: none) {
+
+@media screen and (max-width:830px) {
+  .grid {
+    margin-top: 5rem;
+  }
+
+  header {
+    height: 5rem;
+  }
+
+  .toggleSettings {
+    display: unset;
+    cursor: pointer;
+  }
+
+  .toggleSettings:hover {
+    color: #bd9fcb;
+  }
+
+  header.active {
+    background-color: rgba(38, 30, 39, 0.737);
+    backdrop-filter: blur(2rem);
+    -webkit-backdrop-filter: blur(2rem);
+    height: 100vh;
+    flex-direction: column;
+  }
+
+  ul * {
+    display: none;
+  }
+
+  ul *.active {
+    display: unset;
+  }
+}
+
+/* @media (hover: none) {
+
   header ul,
   .grid {
     display: none;
   }
+
   header:after {
-    content: "Sorry! Etch-a-Sketch is not compatible with your device. See in Desktop.";
+    content: "Sorry ! Etch-a-Sketch is not compatible with your device. See in Desktop.";
     width: 100vw;
     padding: 30px;
     color: #9754cb;
     font-size: 8vw;
     text-align: center;
   }
-}
+} */
