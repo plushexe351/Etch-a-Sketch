@@ -23,9 +23,12 @@ let currentMode = 'default';
 let cells;
 
 pickrange.addEventListener('input', () => {
-    cells = pickrange.value;
-    clearGrid();
-    createCells(cells);
+    if (pickrange.value >= 0 && pickrange.value <= 70) {
+        cells = pickrange.value;
+        clearGrid();
+        createCells(cells);
+    }
+    else console.log("invalid range ! pick a number between 0 and 70");
 })
 
 let cellcolor = defaultColor;
